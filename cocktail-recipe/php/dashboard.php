@@ -130,7 +130,7 @@ if (isset($_POST['btn_search'])) {
                     </form>
                 </ul>
 
-                <a class="btn text-white" style="background-color: #333333; margin-right: 10px;" href="#!"
+                <a class="btn text-white" style="background-color: #333333; margin-right: 10px;" href="https://github.com/fasolinidavide/cocktail-recipe"
                     role="button"> <i class="fab fa-github"></i>
                 </a>
 
