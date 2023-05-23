@@ -92,7 +92,7 @@ curl_close($curl);
     <?php
             
 
-            $nome_video = "how+to+create+" . $result->drinks[0]->strDrink . "+drink+tutorial";
+            $nome_video = "how+to+make" . $result->drinks[0]->strDrink . "+drink+tutorial";
 
             curl_setopt_array($curl, [
                 CURLOPT_URL => "https://youtube-search-results.p.rapidapi.com/youtube-search/?q=$nome_video",
