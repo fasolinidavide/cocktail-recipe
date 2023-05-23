@@ -1,5 +1,7 @@
 # cocktail-recipe
 
+!! ricordarsi di sostituire l'API_KEY con la propria chiave in tutti i file per il corretto utilizzo
+
 ho utilizzato https://rapidapi.com/thecocktaildb/api/the-cocktail-db per la manipolazione dei dati
 
 
