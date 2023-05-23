@@ -27,7 +27,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
         "X-RapidAPI-Host: the-cocktail-db.p.rapidapi.com",
-        "X-RapidAPI-Key: a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
+        "X-RapidAPI-Key: YOUR_API_KEY"
     ],
 ]);
 
@@ -105,7 +105,7 @@ curl_close($curl);
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => [
                     "X-RapidAPI-Host: youtube-search-results.p.rapidapi.com",
-                    "X-RapidAPI-Key: a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
+                    "X-RapidAPI-Key: YOUR_API_KEY"
                 ],
             ]);
 
