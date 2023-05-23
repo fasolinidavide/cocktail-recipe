@@ -2,8 +2,8 @@
 session_start();
 
 $servername = "localhost";
-$database = "cocktail_db";
-$username = "root";
+$database = "my_fasolinidavideh";
+$username = "fasolinidavideh";
 $password = "";
 
 // Create connection2
@@ -27,7 +27,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
         "X-RapidAPI-Host: the-cocktail-db.p.rapidapi.com",
-        "X-RapidAPI-Key: YOUR_API_KEY"
+        "X-RapidAPI-Key: a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
     ],
 ]);
 
@@ -89,11 +89,10 @@ curl_close($curl);
         </div>
     </nav>
 
-    <div class="row row-cols-2">
-        <div class="col-md-5">
-            <?php
+    <?php
+            
 
-            $nome_video = "how+to+create+" . $result->drinks[$randomNumber]->strDrink . "+cocktail+homemade+tutorial";
+            $nome_video = "how+to+create+" . $result->drinks[0]->strDrink . "+drink+tutorial";
 
             curl_setopt_array($curl, [
                 CURLOPT_URL => "https://youtube-search-results.p.rapidapi.com/youtube-search/?q=$nome_video",
@@ -105,7 +104,7 @@ curl_close($curl);
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => [
                     "X-RapidAPI-Host: youtube-search-results.p.rapidapi.com",
-                    "X-RapidAPI-Key: YOUR_API_KEY"
+                    "X-RapidAPI-Key: a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
                 ],
             ]);
 
@@ -117,17 +116,19 @@ curl_close($curl);
             $result_video = json_decode($response_video);
 
             ?>
-
-            <div class='image-info'>
-                <?php echo "<img src='" . $result->drinks[$randomNumber]->strDrinkThumb . "' class='img-fluid' alt='img'>" ?>
-            </div>
+    
+   	<div class="container">
+   		<div class='image-info'>
+        	<?php echo "<img src='" . $result->drinks[0]->strDrinkThumb . "' class='img-fluid' alt='img'>" ?>
         </div>
-        <div class="col-md-5">
-            <div class='description-info'>
+        
+        <div>
+        	 <div class='description-info'>
                 <div class="card  w-100" style="width: 18rem;">
                     <ul class="list-group list-group-light">
                         <li class="list-group-item px-3">
-                            <?php echo "<h2>Nome:  " . $result->drinks[$randomNumber]->strDrink . "</h2>"; ?>
+                            <?php echo "<h2>Nome:  " . $result->drinks[0]->strDrink . "</h2>"; ?>
+
                             <form method="post" action="add_preferiti.php?id_cocktail=<?php echo $idDrink; ?>">
                             <?php
                                 $check = "SELECT * FROM preferiti WHERE utente_id ='$id' AND cocktail_id = '$idDrink'";
@@ -144,25 +145,25 @@ curl_close($curl);
                             </form>
                         </li>
                         <li class="list-group-item px-3">
-                            <?php echo "<h5>descrizione:</h5> <p>" . $result->drinks[$randomNumber]->strInstructionsIT . "</p>"; ?>
+                            <?php echo "<h5>descrizione:</h5> <p>" . $result->drinks[0]->strInstructionsIT . "</p>"; ?>
                         </li>
                         <li class="list-group-item px-3">
                             <h5>ingredienti:</h5>
                             <ul>
                                 <?php
                                 for ($i = 1; $i < 15; $i++) {
-                                    if ($result->drinks[$randomNumber]->{"strIngredient" . $i} == null)
+                                    if ($result->drinks[0]->{"strIngredient" . $i} == null)
                                         break;
 
                                     echo "<li>";
-                                    echo $result->drinks[$randomNumber]->{"strIngredient" . $i} . " - " . $result->drinks[$randomNumber]->{"strMeasure" . $i};
+                                    echo $result->drinks[0]->{"strIngredient" . $i} . " - " . $result->drinks[0]->{"strMeasure" . $i};
                                     echo "</li>";
                                 }
                                 ?>
                             </ul>
                         </li>
                         <li class="list-group-item px-3">
-                            <?php echo "<h5>bicchiere utilizzato:</h5> <p>" . $result->drinks[$randomNumber]->strGlass . "</p>"; ?>
+                            <?php echo "<h5>bicchiere utilizzato:</h5> <p>" . $result->drinks[0]->strGlass . "</p>"; ?>
                         </li>
                         <li class="list-group-item px-3">
                             <iframe src="<?php echo "https://www.youtube.com/embed/" . $result_video->items[0]->id; ?>"
@@ -174,6 +175,7 @@ curl_close($curl);
                 </div>
             </div>
         </div>
+    </div>
 
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
