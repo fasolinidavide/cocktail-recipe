@@ -2,8 +2,8 @@
 session_start();
 
 $servername = "localhost";
-$database = "cocktail_db";
-$username = "root";
+$database = "my_fasolinidavideh";
+$username = "fasolinidavideh";
 $password = "";
 
 // Create connection2
@@ -27,7 +27,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => [
         "X-RapidAPI-Host: the-cocktail-db.p.rapidapi.com",
-        "X-RapidAPI-Key:YOUR_API_KEY"
+        "X-RapidAPI-Key:a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
     ],
 ]);
 
@@ -81,10 +81,8 @@ $result = json_decode($response);
             </ul>
         </div>
     </nav>
-
-    <div class="row row-cols-2">
-        <div class="col-md-5">
-            <?php
+    
+    <?php
             
 
             $nome_video = "how+to+create+" . $result->drinks[0]->strDrink . "+drink+tutorial";
@@ -99,7 +97,7 @@ $result = json_decode($response);
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => [
                     "X-RapidAPI-Host: youtube-search-results.p.rapidapi.com",
-                    "X-RapidAPI-Key:YOUR_API_KEY"
+                    "X-RapidAPI-Key: a1899d0f26msh5e3acbc429b2c71p1fe414jsne0ea092fbbb1"
                 ],
             ]);
 
@@ -111,13 +109,14 @@ $result = json_decode($response);
             $result_video = json_decode($response_video);
 
             ?>
-
-            <div class='image-info'>
-                <?php echo "<img src='" . $result->drinks[0]->strDrinkThumb . "' class='img-fluid' alt='img'>" ?>
-            </div>
+    
+   	<div class="container">
+   		<div class='image-info'>
+        	<?php echo "<img src='" . $result->drinks[0]->strDrinkThumb . "' class='img-fluid' alt='img'>" ?>
         </div>
-        <div class="col-md-5">
-            <div class='description-info'>
+        
+        <div>
+        	 <div class='description-info'>
                 <div class="card  w-100" style="width: 18rem;">
                     <ul class="list-group list-group-light">
                         <li class="list-group-item px-3">
@@ -169,6 +168,7 @@ $result = json_decode($response);
                 </div>
             </div>
         </div>
+    </div>
         <!-- MDB -->
         <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
